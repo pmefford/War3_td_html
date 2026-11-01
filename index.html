@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#10151f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bastion TD">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Bastion TD</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div class="stat" id="stLives" title="Lives">❤️ <b>20</b></div>
+    <div class="stat" id="stGold" title="Gold">🪙 <b>0</b></div>
+    <div class="stat" id="stWave" title="Wave">🌊 <b>0/40</b></div>
+    <div class="spacer"></div>
+    <button class="ibtn" id="btnPause" title="Pause (P)">⏸</button>
+    <button class="ibtn" id="btnSpeed" title="Speed">1×</button>
+    <button class="ibtn" id="btnSound" title="Sound">🔊</button>
+    <button class="ibtn" id="btnMenu" title="Menu">☰</button>
+  </div>
+  <div id="stage">
+    <canvas id="cv"></canvas>
+    <div id="toast"></div>
+    <div id="banner"></div>
+    <div id="pausedTag" hidden>PAUSED</div>
+  </div>
+  <div id="dock">
+    <div id="nextRow">
+      <button id="btnNext" class="primary">▶ Start wave 1</button>
+      <div id="nextInfo"></div>
+    </div>
+    <div id="build"></div>
+    <div id="sel" hidden></div>
+    <div id="hint"></div>
+  </div>
+</div>
+
+<div id="menu" class="overlay">
+  <div class="card">
+    <img src="icons/icon.svg" alt="" class="logo">
+    <h1>Bastion TD</h1>
+    <p class="sub">Build a maze. Upgrade your towers. Survive 40 waves.</p>
+    <div class="diffs" id="diffs"></div>
+    <button id="btnPlay" class="primary big">Play</button>
+    <button id="btnResume" class="big" hidden>Resume game</button>
+    <button id="btnHow" class="link">How to play</button>
+    <div id="how" hidden>
+      <ul>
+        <li><b>Place towers</b> on the grid to build a maze. Enemies walk <b>spawn → ① → ② → exit</b>; you can lengthen their trip but never fully block it.</li>
+        <li><b>Tap a tower</b> to upgrade it (3 levels), then pick one of <b>two specialisations</b>. Selling returns 70%.</li>
+        <li><b>Armored</b> foes (🛡️) shrug off physical hits – use poison, frost, storm. <b>Warded</b> (🔮) resist magic – use cannons &amp; arrows. <b>Flyers</b> (🐉) ignore the maze – you need anti-air.</li>
+        <li><b>Send waves early</b> for bonus gold. Every 10th wave is a boss; bosses cost 5 lives if they leak.</li>
+        <li>Desktop keys: <kbd>1-6</kbd> pick tower, <kbd>Space</kbd> send wave, <kbd>U</kbd> upgrade, <kbd>S</kbd> sell, <kbd>P</kbd> pause, <kbd>Esc</kbd> cancel.</li>
+      </ul>
+    </div>
+    <p class="fine" id="bestLine"></p>
+  </div>
+</div>
+
+<div id="end" class="overlay" hidden>
+  <div class="card">
+    <h1 id="endTitle">Victory!</h1>
+    <p class="sub" id="endSub"></p>
+    <button id="btnEndarless" class="primary big" hidden>Keep going (endless)</button>
+    <button id="btnRetry" class="big">Play again</button>
+    <button id="btnToMenu" class="link">Main menu</button>
+  </div>
+</div>
+
+<script src="src/data.js"></script>
+<script src="src/engine.js"></script>
+<script src="src/ui.js"></script>
+</body>
+</html>
